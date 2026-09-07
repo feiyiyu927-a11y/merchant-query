@@ -62,6 +62,21 @@ input:focus{border-color:#2563f4;box-shadow:0 0 0 3px rgba(37,99,244,.1)}
 .empty{text-align:center;padding:48px 16px;color:#8c8c8c}
 .empty-icon{opacity:.25;margin-bottom:12px}
 </style>
+<script>
+// 版本自动更新检测：版本不一致时强制刷新一次
+(function(){
+  var V = '202609071653';
+  if(localStorage.getItem('_mqv') !== V){
+    localStorage.setItem('_mqv', V);
+    // 只在非刷新状态下触发，避免死循环
+    if(!sessionStorage.getItem('_mqr')){
+      sessionStorage.setItem('_mqr','1');
+      location.reload(true);
+    }
+  }
+  sessionStorage.removeItem('_mqr');
+})();
+</script>
 </head>
 <body>
 <header class="header">
